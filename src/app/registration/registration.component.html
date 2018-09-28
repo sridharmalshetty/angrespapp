@@ -1,0 +1,46 @@
+<form [formGroup]="regform" (ngSubmit)="onSubmit(regform)"  >
+  <div class="form-group">
+    <label for="email">First Name:</label>
+    <input type="text" class="form-control"  formControlName="firstname"  name="firstname" id="firstname">
+  
+    <div *ngIf="regform.controls['firstname'].touched && !regform.controls['firstname'].valid ">
+       <span *ngIf="regform.controls['firstname'].hasError('required')" > First name is required</span>
+    </div>
+  </div>
+  <div class="form-group">
+      <label for="email">Last Name:</label>
+      <input type="text" class="form-control"  formControlName="lastname" name="lastname" id="lastname">
+      <div *ngIf="regform.controls['lastname'].touched && !regform.controls['lastname'].valid">
+          <span *ngIf="regform.controls['lastname'].hasError('required')" > Last name is required</span>
+    
+      </div>
+    </div>
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" formControlName="email" name="email" id="email">
+         <div *ngIf="regform.controls['email'].touched && !regform.controls['email'].valid" >
+            <span *ngIf="regform.controls['email'].hasError('required')" > Email is required</span>
+         
+        </div>
+      </div>
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <input type="password" class="form-control" name="password" formControlName="password" id="password">
+    <div *ngIf="regform.controls['password'].touched && !regform.controls['password'].valid" >
+        <span *ngIf="regform.controls['password'].hasError('required')"></span>
+        Password required
+      </div>
+  </div>
+  <div class="form-group">
+      <label for="pwd">Confirm Password:</label>
+      <input type="password" class="form-control"  name="confirmpassword" formControlName="confirmpassword" id="confirmpassword">
+      <div *ngIf="regform.controls['confirmpassword'].touched && !regform.controls['confirmpassword'].valid" >
+      <span *ngIf="regform.controls['confirmpassword'].hasError('required')">
+     Confirm Password Required
+
+      </span>
+      </div>
+    </div>
+   
+  <button type="submit" class="btn btn-primary" [disabled] = "!regform.valid">Submit</button>
+</form> 
