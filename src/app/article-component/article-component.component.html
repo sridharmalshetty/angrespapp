@@ -1,0 +1,57 @@
+<form  (ngSubmit)="submitarticle(articleform)"  [formGroup]= "articleform" >
+
+    <input type="hidden" name="_id"  formControlName="_id"/>
+    <div class="form-group">
+ Title: <input type="text" class="form-control"  name="title" formControlName="title" />
+ <div *ngIf="articleform.controls['title'].touched && !articleform.controls['title'].valid" >
+    <span *ngIf="articleform.controls['title'].hasError('required')">
+   Title Required
+
+    </span></div></div>
+    <div class="form-group">
+ Price:<input type="number" name="price"  class="form-control"  formControlName="price" />
+ <div *ngIf="articleform.controls['price'].touched && !articleform.controls['price'].valid" >
+    <span *ngIf="articleform.controls['price'].hasError('required')">
+   Price Required
+
+    </span>
+    </div></div>
+    <div class="form-group">
+ Instock:<input type="text" name="instock" class="form-control" formControlName="instock"/>
+ <div *ngIf="articleform.controls['instock'].touched && !articleform.controls['instock'].valid" >
+    <span *ngIf="articleform.controls['instock'].hasError('required')">
+   Photo Required
+
+    </span>
+    </div></div>
+    <div class="form-group">
+ Photo:<input type="text" name="photo" class="form-control" formControlName="photo" />
+ <div *ngIf="articleform.controls['photo'].touched && !articleform.controls['photo'].valid" >
+    <span *ngIf="articleform.controls['photo'].hasError('required')">
+   Photo Required
+
+    </span>
+    </div></div>
+<button type="submit" class="btn btn-primary" [disabled] = "!articleform.valid" >Add Data</button> 
+
+</form>
+
+<table class='table table-striped' *ngIf='articles && articles.length'>  
+    <thead>  
+        <tr>  
+            <th>Product title</th>  
+            <th>Product Price</th>  
+            <th>Product Instock</th> 
+            <th>Product Photo </th> 
+        </tr>  
+    </thead>  
+    <tbody>  
+        <tr *ngFor="let user of articles">  
+            <td>{{user.title}}</td>  
+            <td>{{user.price}}</td>  
+            <td>{{user.instock}}</td>
+            <td>{{user.photo}}</td>  
+            <td> <button title="Edit" class="btn btn-primary" (click) ="editproduct(user._id)" >Edit</button> <button title="Delete" class="btn btn-danger" (click)="deleteproduct(user._id)">Delete</button> </td>  
+        </tr>  
+    </tbody>  
+</table>  

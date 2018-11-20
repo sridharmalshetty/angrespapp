@@ -35,7 +35,7 @@ export class RegistrationComponent implements OnInit {
  
 
  onSubmit( test : NgForm){
- // alert(JSON.stringify(test.value));
+  alert(JSON.stringify(this.regform.value));
  var response = this.restHttp.insertData(test.value).subscribe(data => {
    console.log(data);
 alert('inserted data');

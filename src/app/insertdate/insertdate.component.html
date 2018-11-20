@@ -1,0 +1,6 @@
+<div class='panel-heading'>Add Roles</div>  
+<form  (ngSubmit)="onSubmit(userFrm)" [formGroup]="userFrm">  
+    <input type="text" class="form-control"  placeholder="Role Name" formControlName="rolename"> 
+    <input type="text" class="form-control" placeholder="Slug" formControlName="roleslug">
+    <button type="submit" class="btn btn-primary" >Submit</button>
+</form> 

@@ -1,0 +1,35 @@
+<div class='panel panel-primary'>  
+  <div class='panel-heading'> User Management </div>  
+  <div class='panel-body'>  
+      <div class='table-responsive'>  
+          <div style="padding-bottom:10px"><a routerLink ="add"><button class="btn btn-primary"> Add</button></a></div> 
+          <div class="alert alert-info" role="alert" *ngIf="indLoading"><img src="" width="32" height="32" /> Loading...</div>  
+          <div *ngIf='users && users.length==0' class="alert alert-info" role="alert">No record found!</div>  
+          <table class='table table-striped' *ngIf='users && users.length'>  
+              <thead>  
+                  <tr>  
+                      <th>Role Name</th>  
+                      <th>Slug</th>  
+                      <th>created_at</th>  
+                  </tr>  
+              </thead>  
+              <tbody>  
+                  <tr *ngFor="let user of users">  
+                      <td>{{user.name}}</td>  
+                      <td>{{user.slug}}</td>  
+                      <td>{{user.created_at}}</td>  
+                      <td> <button title="Edit" class="btn btn-primary" (click) ="edituser(user.id)" >Edit</button> <button title="Delete" class="btn btn-danger" (click)="deleteUser(user.id)">Delete</button> </td>  
+                  </tr>  
+              </tbody>  
+          </table>  
+          <div> </div>  
+      </div>  
+     
+  </div>  
+</div>  
+<router-outlet></router-outlet>
+
+
+
+
+<!-- modal -->
